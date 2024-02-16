@@ -1,0 +1,62 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery ajax() 方法基本用法</title>
+    <!-- 引入 jQuery 库 -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+    <button id="getDataButton">获取数据</button>
+    <div id="dataContainer"></div>
+    <P id = "demo"></P>
+
+    <script>
+        // 等待文档加载完成
+        $(document).ready(function () {
+            // 监听按钮点击事件
+            $("#getDataButton").click(function () {
+                // 使用 ajax() 方法发起 GET 请求
+                // $.ajax({
+                //     url: "https://jsonplaceholder.typicode.com/posts/1",
+                //     method: "GET",
+                //     success: function (data) {
+                //         // 请求成功时的处理
+                //         $("#dataContainer").text(data.title);
+                //     },
+                //     error: function (xhr, status, error) {
+                //         // 请求失败时的处理
+                //         console.error("请求失败：", status, error);
+                //     }
+                // });
+                //使用jQuery AJax作为请求提交工具
+                $.ajax({
+                    type:'get',
+                    url:' https://api.neptune-iiot.net/device/detail',
+                    dataType:'json',
+                    data:{
+                        app_id: 'nep309224a2b',	
+                    app_secret: '7273a59f5d54e0e760fe946bd95c3815',
+                        uuid: '16EF-3941-9F84-1CAB'
+                    },
+                success: function(data) {
+               
+                console.log(data);
+                
+               // document.getElementById("demo").innerHTML = data.data.devices[0].baseInfo.name; 
+                },
+                 
+                });
+
+            
+                
+
+                
+
+            });
+        });
+    </script>
+</body>
+</html> 
